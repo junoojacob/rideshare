@@ -1,7 +1,8 @@
-# api/tests.py
 from django.test import TestCase
 from django.contrib.auth.models import User
 from .models import Ride
+from rest_framework.test import APIClient
+from rest_framework import status
 
 class RideModelTest(TestCase):
     def test_ride_creation(self):
@@ -13,11 +14,6 @@ class RideModelTest(TestCase):
         )
         self.assertEqual(ride.status, 'requested')
         self.assertEqual(ride.rider.username, 'testuser')
-
-
-# Add to api/tests.py
-from rest_framework.test import APIClient
-from rest_framework import status
 
 class RideAPITest(TestCase):
     def setUp(self):
